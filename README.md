@@ -1,16 +1,23 @@
 # Erika 插件
 
-Erika 的插件仓库。Erika 的插件市场读这里的 `plugins.json`；在它发布到网上之前，可以让 Erika 读本地的这份：
+Erika 的插件仓库。Erika 的插件市场读这里的 `plugins.json`。在它发布到网上之前：
+
+- Erika 的调试版在构建时把这里的插件编进程序，市场里直接列出它们（排在最前，同一个 id 以这里的为准），手机和电视上也能装。改了插件重新构建 Erika 就会更新。`ERIKA_LOCAL_PLUGINS` 可以指向别的插件文件夹，设成 `-` 则不带；正式版不带。
+- 也可以让 Erika 读本地的索引：`ERIKA_PLUGIN_INDEX=/Library/Afolder/RustProject/erika_plugins/plugins.json`。
+- 还可以在「设置 › 插件 › 已安装」里「导入文件」（插件包或 NipaPlay 的 `.js`）或「导入文件夹」。
+
+## 插件包（.epk）
+
+仓库和市场里的插件都是文件夹；单独分发一个插件时用插件包。插件包是 zip：插件文件夹里的文件放在包的根上。Erika「导入文件」时把它解压到数据目录的 `plugins/<id>/`，装好后仍是文件夹。导入时会检查 `pack.json` 和其中 `main` 指定的脚本，名字跳出文件夹的包、解压后超过 32 MB 的包都不会装。
 
 ```sh
-ERIKA_PLUGIN_INDEX=/Library/Afolder/RustProject/erika_plugins/plugins.json
+python3 tools/pack.py                              # plugins.json 列出的每个插件，写到 dist/<id>.epk
+python3 tools/pack.py plugins/erika.speed_range    # 只打这几个文件夹
 ```
-
-也可以在「设置 › 插件 › 已安装」里用「导入文件夹」直接装某个插件的文件夹。
 
 ## 插件的格式
 
-Erika 的插件是一个文件夹，放三个文件：
+Erika 的插件是一个文件夹，放三个文件（也可以有别的文件，插件包会一起带上）：
 
 | 文件 | 作用 |
 | --- | --- |
