@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "plugins": [
+    {
+      "id": "erika.auto_danmaku_offset",
+      "name": "自动弹幕偏移",
+      "version": "1.0.0",
+      "minHostVersion": "0.1.0",
+      "description": "打开视频时检测开头有没有网飞或 Aniplex 的片头；有的话按经验长度把弹幕延后，让弹幕对上正片。",
+      "author": "Erika",
+      "category": "danmaku",
+      "permissions": [
+        "danmaku.modify",
+        "player.control",
+        "ui.dialog"
+      ],
+      "icon": "icon.png",
+      "iconId": "gobackward.10",
+      "main": "main.js",
+      "priority": 40,
+      "path": "plugins/erika.auto_danmaku_offset"
+    },
+    {
+      "id": "erika.danmaku_colors",
+      "name": "更多弹幕颜色",
+      "version": "1.0.0",
+      "minHostVersion": "0.1.0",
+      "description": "发送弹幕时，除了白、黑、黄、绿、红、蓝，再多出 NipaPlay 的其余九种颜色。",
+      "author": "Erika",
+      "category": "danmaku",
+      "permissions": [
+        "danmaku.modify"
+      ],
+      "icon": "icon.png",
+      "iconId": "paintpalette",
+      "main": "main.js",
+      "priority": 50,
+      "path": "plugins/erika.danmaku_colors"
+    },
+    {
+      "id": "erika.danmaku_hex_color",
+      "name": "十六进制弹幕颜色",
+      "version": "1.0.0",
+      "minHostVersion": "0.1.0",
+      "description": "发送弹幕的气泡里多出一个输入框，可以直接填 #RRGGBB 形式的颜色。",
+      "author": "Erika",
+      "category": "danmaku",
+      "permissions": [
+        "danmaku.modify"
+      ],
+      "icon": "icon.png",
+      "iconId": "paintpalette",
+      "main": "main.js",
+      "priority": 50,
+      "path": "plugins/erika.danmaku_hex_color"
+    },
+    {
+      "id": "erika.download_quick_select",
+      "name": "下载快速选择",
+      "version": "1.0.0",
+      "minHostVersion": "0.1.0",
+      "description": "添加下载时列出以前下载过的文件夹，以及媒体库里名字和种子对得上的番剧所在的文件夹，点一下就下到那里。",
+      "author": "Erika",
+      "category": "tools",
+      "permissions": [
+        "library.read"
+      ],
+      "icon": "icon.png",
+      "iconId": "folder",
+      "main": "main.js",
+      "priority": 50,
+      "path": "plugins/erika.download_quick_select"
+    },
+    {
+      "id": "erika.episode_watched",
+      "name": "手动标记已看",
+      "version": "1.0.0",
+      "minHostVersion": "0.1.0",
+      "description": "番剧详情里每一集的右上角多一个按钮，点一下就把这一集标记为已看；登录了弹弹play 或 Bangumi 时同步到账号。",
+      "author": "Erika",
+      "category": "tools",
+      "permissions": [
+        "library.write"
+      ],
+      "icon": "icon.png",
+      "iconId": "checkmark",
+      "main": "main.js",
+      "priority": 50,
+      "path": "plugins/erika.episode_watched"
+    },
+    {
+      "id": "erika.speed_range",
+      "name": "倍速扩展",
+      "version": "1.0.0",
+      "minHostVersion": "0.1.0",
+      "description": "让倍速播放更灵活：倍速菜单扩展到 0.25× 至 5×，可选每 0.25× 一档。",
+      "author": "Erika",
+      "category": "tools",
+      "permissions": [
+        "player.control"
+      ],
+      "icon": "icon.png",
+      "iconId": "speedometer",
+      "main": "main.js",
+      "priority": 50,
+      "path": "plugins/erika.speed_range"
+    },
+    {
+      "id": "erika.spoiler_ai",
+      "name": "AI 防剧透",
+      "version": "1.0.0",
+      "minHostVersion": "0.1.0",
+      "description": "弹幕载入后，把弹幕文本交给你配置的 AI 服务（OpenAI 兼容接口或 Google Gemini），识别并屏蔽疑似剧透的弹幕。被分析的弹幕会发到你填写的服务商。",
+      "author": "Erika",
+      "category": "danmaku",
+      "permissions": [
+        "danmaku.modify",
+        "network",
+        "ui.dialog"
+      ],
+      "icon": "icon.png",
+      "iconId": "eye.slash",
+      "main": "main.js",
+      "priority": 60,
+      "path": "plugins/erika.spoiler_ai"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "erika.danmaku_colors",
+  "name": "更多弹幕颜色",
+  "version": "1.0.0",
+  "minHostVersion": "0.1.0",
+  "description": "发送弹幕时，除了白、黑、黄、绿、红、蓝，再多出 NipaPlay 的其余九种颜色。",
+  "author": "Erika",
+  "category": "danmaku",
+  "permissions": ["danmaku.modify"],
+  "icon": "icon.png",
+  "iconId": "paintpalette",
+  "main": "main.js",
+  "priority": 50
+}

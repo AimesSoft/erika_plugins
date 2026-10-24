@@ -1,0 +1,14 @@
+{
+  "id": "erika.danmaku_hex_color",
+  "name": "十六进制弹幕颜色",
+  "version": "1.0.0",
+  "minHostVersion": "0.1.0",
+  "description": "发送弹幕的气泡里多出一个输入框，可以直接填 #RRGGBB 形式的颜色。",
+  "author": "Erika",
+  "category": "danmaku",
+  "permissions": ["danmaku.modify"],
+  "icon": "icon.png",
+  "iconId": "paintpalette",
+  "main": "main.js",
+  "priority": 50
+}

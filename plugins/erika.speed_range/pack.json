@@ -1,0 +1,14 @@
+{
+  "id": "erika.speed_range",
+  "name": "倍速扩展",
+  "version": "1.0.0",
+  "minHostVersion": "0.1.0",
+  "description": "让倍速播放更灵活：倍速菜单扩展到 0.25× 至 5×，可选每 0.25× 一档。",
+  "author": "Erika",
+  "category": "tools",
+  "permissions": ["player.control"],
+  "icon": "icon.png",
+  "iconId": "speedometer",
+  "main": "main.js",
+  "priority": 50
+}

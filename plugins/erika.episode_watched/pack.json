@@ -1,0 +1,14 @@
+{
+  "id": "erika.episode_watched",
+  "name": "手动标记已看",
+  "version": "1.0.0",
+  "minHostVersion": "0.1.0",
+  "description": "番剧详情里每一集的右上角多一个按钮，点一下就把这一集标记为已看；登录了弹弹play 或 Bangumi 时同步到账号。",
+  "author": "Erika",
+  "category": "tools",
+  "permissions": ["library.write"],
+  "icon": "icon.png",
+  "iconId": "checkmark",
+  "main": "main.js",
+  "priority": 50
+}

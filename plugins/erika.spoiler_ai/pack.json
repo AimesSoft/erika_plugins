@@ -1,0 +1,14 @@
+{
+  "id": "erika.spoiler_ai",
+  "name": "AI 防剧透",
+  "version": "1.0.0",
+  "minHostVersion": "0.1.0",
+  "description": "弹幕载入后，把弹幕文本交给你配置的 AI 服务（OpenAI 兼容接口或 Google Gemini），识别并屏蔽疑似剧透的弹幕。被分析的弹幕会发到你填写的服务商。",
+  "author": "Erika",
+  "category": "danmaku",
+  "permissions": ["danmaku.modify", "network", "ui.dialog"],
+  "icon": "icon.png",
+  "iconId": "eye.slash",
+  "main": "main.js",
+  "priority": 60
+}

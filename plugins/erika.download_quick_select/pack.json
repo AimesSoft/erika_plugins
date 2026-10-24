@@ -1,0 +1,14 @@
+{
+  "id": "erika.download_quick_select",
+  "name": "下载快速选择",
+  "version": "1.0.0",
+  "minHostVersion": "0.1.0",
+  "description": "添加下载时列出以前下载过的文件夹，以及媒体库里名字和种子对得上的番剧所在的文件夹，点一下就下到那里。",
+  "author": "Erika",
+  "category": "tools",
+  "permissions": ["library.read"],
+  "icon": "icon.png",
+  "iconId": "folder",
+  "main": "main.js",
+  "priority": 50
+}
