@@ -4,7 +4,7 @@
     {
       "id": "erika.auto_danmaku_offset",
       "name": "自动弹幕偏移",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "minHostVersion": "0.1.0",
       "description": "打开视频时检测开头有没有网飞片头；有的话按经验长度把弹幕延后，让弹幕对上正片。",
       "author": "Erika",
@@ -12,7 +12,8 @@
       "permissions": [
         "danmaku.modify",
         "player.control",
-        "ui.dialog"
+        "ui.dialog",
+        "storage"
       ],
       "icon": "icon.png",
       "iconId": "gobackward.10",

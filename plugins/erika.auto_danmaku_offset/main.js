@@ -49,11 +49,31 @@ function pluginHandleUIAction(id) {
   return null;
 }
 
+// The offset this plugin set and the one it replaced: a video without the
+// ident gets the earlier offset back, unless the user changed it since.
+function undo() {
+  var last = storage.get('applied');
+  if (!last) return;
+  if (danmaku.getOffset() === last.offset) danmaku.setOffset(last.before);
+  storage.remove('applied');
+}
+
+function pluginOnDestroy() {
+  undo();
+}
+
 function pluginOnEvent(event) {
   if (event.name !== 'openingProfiled') return;
   var frames = (event.data && event.data.frames) || [];
   var delay = seconds();
-  if (delay === 0 || !netflix(frames)) return;
+  if (delay === 0 || !netflix(frames)) {
+    undo();
+    return;
+  }
+  var last = storage.get('applied');
+  var current = danmaku.getOffset();
+  var before = last && current === last.offset ? last.before : current;
   danmaku.setOffset(delay);
+  storage.set('applied', { offset: delay, before: before });
   if (settings.getSwitch('notify', true)) ui.showSnackBar('检测到网飞片头，弹幕延后 ' + delay + ' 秒');
 }
