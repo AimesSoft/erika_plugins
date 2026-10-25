@@ -79,7 +79,7 @@ Erika 自己加的：
 | `extend.danmakuHexInput(true)` | `danmaku.modify` | 发送弹幕的气泡里多一个十六进制颜色输入框 |
 | `extend.episodeWatchedButton(true)` | `library.write` | 番剧详情的每一集右上角显示「标记已看」 |
 | `extend.downloadQuickSelect(true)` | `library.read` | 添加下载时显示「快速选择」；`pluginDownloadSuggestions({ name })` 返回 `[{ title, folder }]` |
-| `extend.openingProfile(true)` | `player.control` | 打开视频时量开头几秒，发 `openingProfiled` 事件 |
+| `extend.openingProfile(true, seconds)` | `player.control` | 打开视频时量开头 `seconds` 秒（默认 10，最多 60），发 `openingProfiled` 事件 |
 
 `extend` 加的东西只在插件运行时有效，关掉插件就没了。
 
@@ -90,7 +90,7 @@ Erika 自己加的：
 | 插件 | 分类 | 做什么 |
 | --- | --- | --- |
 | AI 防剧透 | 弹幕 | 从 NipaPlay 移植：把弹幕交给你配置的 AI（OpenAI 兼容接口或 Gemini），屏蔽它认为剧透的 |
-| 自动弹幕偏移 | 弹幕 | 认出网飞片头，按经验长度把弹幕延后 |
+| 自动弹幕偏移 | 弹幕 | 认出网飞片头，把弹幕延后到片头后的黑场结束、正片开始的时刻 |
 | 更多弹幕颜色 | 弹幕 | 发送弹幕时多出 NipaPlay 的其余九种颜色 |
 | 十六进制弹幕颜色 | 弹幕 | 发送弹幕时可以输入 `#RRGGBB` |
 | 倍速扩展 | 工具 | 倍速扩展到 0.25× 至 5× |

@@ -4,9 +4,9 @@
     {
       "id": "erika.auto_danmaku_offset",
       "name": "自动弹幕偏移",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "minHostVersion": "0.1.0",
-      "description": "打开视频时检测开头有没有网飞片头；有的话按经验长度把弹幕延后，让弹幕对上正片。",
+      "description": "打开视频时检测开头有没有网飞片头；有的话量出片头后的黑场在哪里结束，把弹幕延后到正片开始的时刻。",
       "author": "Erika",
       "category": "danmaku",
       "permissions": [

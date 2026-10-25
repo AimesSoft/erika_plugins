@@ -1,16 +1,16 @@
-// 自动弹幕偏移：弹幕按电视播出的时间轴发送，而网飞的片源在正片前多了几秒
-// 片头，弹幕就早了。这个插件让 liberika 量一下视频开头的几秒，认出网飞
-// 片头后按经验长度把弹幕延后。
+// 自动弹幕偏移：弹幕按电视播出的时间轴发送，而网飞的片源在正片前多了片头和
+// 一段黑场，弹幕就早了。这个插件让 liberika 量一下视频开头，认出网飞片头
+// 后找到黑场结束、正片开始的时刻，把弹幕延后这么多。
 
 var pluginUIEntries = [
-  { id: 'seconds', title: '网飞片头长度（秒）', description: '认出片头后弹幕延后这么多。', textSetting: { hintText: '5', default: '5' } },
   { id: 'notify', title: '偏移时提示', enabled: true },
 ];
 
-function seconds() {
-  var value = parseFloat(settings.getText('seconds', '5'));
-  return isNaN(value) ? 5 : Math.max(0, Math.min(10, value));
-}
+// How much of each video to measure: what Netflix puts before the episode
+// ends well within this. Measured on a Netflix WEB-DL: black until 1.3 s,
+// the letter and its ribbons until 4.96 s, black, a dim 「A Netflix Series」
+// from 6.1 s to 9.9 s, black again, and the episode fading in at 11.6 s.
+var LOOK = 30;
 
 // A frame of the ident: nearly all black, with a small red letter in it
 // and no other color.
@@ -20,28 +20,54 @@ function redOnBlack(frame) {
     frame.red > frame.green * 4 && frame.red > frame.blue * 4;
 }
 
-// The red N on black: it shows within the first three seconds and stays at
-// least a second and a half. Measured on a Netflix WEB-DL: black until 1.1 s,
-// the letter from 1.4 s to 3.4 s, its ribbons until 5 s, black again at 5.1 s.
-function netflix(frames) {
+// A frame with nothing on it.
+function black(frame) {
+  return frame.dark >= 0.98 && frame.luma < 0.008 && frame.red_share < 0.005;
+}
+
+// A frame mostly lit: not black, and not a line of dim words on black.
+function picture(frame) {
+  return frame.dark < 0.9;
+}
+
+// Where the red N on black starts: within the first three seconds, staying
+// at least a second and a half; -1 without it.
+function ident(frames) {
   var run = 0;
-  var start = null;
+  var start = -1;
   for (var i = 0; i < frames.length && frames[i].time < 6; i++) {
     var frame = frames[i];
     if (redOnBlack(frame)) {
-      if (run === 0) start = frame.time;
+      if (run === 0) start = i;
       run += 1;
-      if (start <= 3 && frame.time - start >= 1.5) return true;
+      if (frames[start].time <= 3 && frame.time - frames[start].time >= 1.5) return start;
     } else {
       run = 0;
     }
   }
-  return false;
+  return -1;
+}
+
+// When the episode starts after the ident at `from`: past the black that
+// ends the ident, the first picture, or where it fades in, right after the
+// last black before it. Without a picture within what was measured, when
+// that black started; without the black, null.
+function episodeStart(frames, from) {
+  var gap = from;
+  while (gap < frames.length && !black(frames[gap])) gap++;
+  if (gap === frames.length) return null;
+  for (var i = gap; i < frames.length; i++) {
+    if (!picture(frames[i])) continue;
+    var last = i;
+    while (!black(frames[last - 1])) last--;
+    return frames[last].time;
+  }
+  return frames[gap].time;
 }
 
 function pluginOnInitialize() {
-  extend.openingProfile(true);
-  pluginUIEntries[1].enabled = settings.getSwitch('notify', true);
+  extend.openingProfile(true, LOOK);
+  pluginUIEntries[0].enabled = settings.getSwitch('notify', true);
 }
 
 function pluginHandleUIAction(id) {
@@ -65,11 +91,13 @@ function pluginOnDestroy() {
 function pluginOnEvent(event) {
   if (event.name !== 'openingProfiled') return;
   var frames = (event.data && event.data.frames) || [];
-  var delay = seconds();
-  if (delay === 0 || !netflix(frames)) {
+  var start = ident(frames);
+  var at = start < 0 ? null : episodeStart(frames, start);
+  if (at === null) {
     undo();
     return;
   }
+  var delay = Math.round(at * 10) / 10;
   var last = storage.get('applied');
   var current = danmaku.getOffset();
   var before = last && current === last.offset ? last.before : current;
