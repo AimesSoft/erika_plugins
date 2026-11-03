@@ -1,0 +1,14 @@
+{
+  "id": "erika.progress_strip",
+  "name": "底部进度条",
+  "version": "1.0.0",
+  "minHostVersion": "0.1.0",
+  "description": "在画面最下面显示一条细线，长度就是播放进度，收起控制栏时也看得出播到了哪里。",
+  "author": "Erika",
+  "category": "appearance",
+  "permissions": ["player.overlay"],
+  "icon": "icon.png",
+  "iconId": "slider.horizontal.3",
+  "main": "main.js",
+  "priority": 50
+}

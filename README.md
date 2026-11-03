@@ -115,8 +115,14 @@ Erika 自己加的：
 | `extend.episodeWatchedButton(true)` | `library.write` | 番剧详情的每一集右上角显示「标记已看」 |
 | `extend.downloadQuickSelect(true)` | `library.read` | 添加下载时显示「快速选择」；`pluginDownloadSuggestions({ name })` 返回 `[{ title, folder }]` |
 | `extend.openingProfile(true, seconds)` | `player.control` | 打开视频时量开头 `seconds` 秒（默认 10，最多 60），发 `openingProfiled` 事件 |
+| `extend.progressStrip(颜色)` | `player.overlay` | 画面最下面显示一条细线，长度是播放进度；`null` 收起 |
+| `extend.danmakuDensity(颜色)` | `player.overlay` | 画面最下面画出整集弹幕的疏密曲线；`null` 收起 |
 
 `extend` 加的东西只在插件运行时有效，关掉插件就没了。
+
+画面上的颜色只能是主题里的几种：`'accent'`（强调色）、`'red'`、`'orange'`、`'green'`，跟着系统的浅色或深色外观走，不能写 `#RRGGBB`。
+
+`pluginUIEntries` 里的设置项写上 `placement: 'danmakuMenu'`，就出现在播放器的弹幕菜单里，而不在插件的设置页。这里除了开关（`enabled`），还可以是颜色：`colorSetting: { default: 'red' }`，用户在上面四种颜色里选。选中的颜色用 `settings.getText(id, 默认值)` 读；改动开关或颜色时，和设置页的开关一样调用 `pluginHandleUIAction(id)`。
 
 事件（`pluginOnEvent`）：`videoLoaded`、`play`、`pause`、`seek`、`danmakuLoaded`，以及 Erika 的 `openingProfiled`（`{ url, frames: [{ time, red, green, blue, luma, dark, white, red_share }] }`）。
 

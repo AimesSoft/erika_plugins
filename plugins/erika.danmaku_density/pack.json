@@ -1,0 +1,14 @@
+{
+  "id": "erika.danmaku_density",
+  "name": "弹幕密度图",
+  "version": "1.0.0",
+  "minHostVersion": "0.1.0",
+  "description": "在画面最下面画出整集弹幕的疏密，一眼看出哪里最热闹。",
+  "author": "Erika",
+  "category": "danmaku",
+  "permissions": ["player.overlay"],
+  "icon": "icon.png",
+  "iconId": "text.bubble",
+  "main": "main.js",
+  "priority": 50
+}
