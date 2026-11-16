@@ -158,6 +158,21 @@
       "main": "main.js",
       "priority": 50,
       "path": "plugins/erika.danmaku_density"
+    },
+    {
+      "id": "erika.hover_glow",
+      "name": "悬浮光晕",
+      "version": "1.0.0",
+      "minHostVersion": "0.1.2",
+      "description": "鼠标或手指移过番剧详情页封面与分集剧照时，在画面上叠加跟随指针移动的柔和光晕。",
+      "author": "Erika",
+      "category": "appearance",
+      "permissions": [],
+      "icon": "icon.png",
+      "iconId": "sparkles",
+      "main": "main.js",
+      "priority": 50,
+      "path": "plugins/erika.hover_glow"
     }
   ]
 }

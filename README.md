@@ -15,6 +15,7 @@ Erika 的官方插件仓库。Erika 的「设置 › 插件」里的插件市场
 | [倍速扩展](plugins/erika.speed_range) | 工具 | 倍速扩展到 0.25× 至 5× |
 | [手动标记已看](plugins/erika.episode_watched) | 工具 | 番剧详情里每一集右上角的「标记已看」，登录了账号时同步 |
 | [下载快速选择](plugins/erika.download_quick_select) | 工具 | 添加下载时快速选择以前用过的文件夹和对应番剧的文件夹 |
+| [悬浮光晕](plugins/erika.hover_glow) | 外观 | 鼠标或手指移过番剧详情页封面与分集剧照时叠加跟随指针的柔和光晕 |
 
 每个插件文件夹里的 `README.md` 写着它的功能、设置、权限与更新日志，Erika 的插件详情页显示的就是它。
 
@@ -117,6 +118,7 @@ Erika 自己加的：
 | `extend.openingProfile(true, seconds)` | `player.control` | 打开视频时量开头 `seconds` 秒（默认 10，最多 60），发 `openingProfiled` 事件 |
 | `extend.progressStrip(颜色)` | `player.overlay` | 画面最下面显示一条细线，长度是播放进度；`null` 收起 |
 | `extend.danmakuDensity(颜色)` | `player.overlay` | 画面最下面画出整集弹幕的疏密曲线；`null` 收起 |
+| `extend.hoverGlow(true)` | — | 为番剧详情封面与分集剧照开启跟随指针的柔和光晕 |
 
 `extend` 加的东西只在插件运行时有效，关掉插件就没了。
 
