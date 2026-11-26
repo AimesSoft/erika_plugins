@@ -16,6 +16,9 @@ Erika 的官方插件仓库。Erika 的「设置 › 插件」里的插件市场
 | [手动标记已看](plugins/erika.episode_watched) | 工具 | 番剧详情里每一集右上角的「标记已看」，登录了账号时同步 |
 | [下载快速选择](plugins/erika.download_quick_select) | 工具 | 添加下载时快速选择以前用过的文件夹和对应番剧的文件夹 |
 | [悬浮光晕](plugins/erika.hover_glow) | 外观 | 鼠标或手指移过番剧详情页封面与分集剧照时叠加跟随指针的柔和光晕 |
+| [CRT 滤镜](plugins/erika.crt_filter) | 画面 | 移植自 NipaPlay 的复古 CRT 显像管滤镜（轻度 / 标准 / 高级），仅作用于视频本体 |
+| [CAS 对比度锐化](plugins/erika.cas_sharpen) | 画面 | 单通道对比度自适应锐化（CAS），增强线条与细节且避免白边过冲 |
+| [FSRCNNX 超分](plugins/erika.fsrcnnx) | 画面 | FSRCNNX 2× 神经网络亮度超分辨率模型包（8-0-4-1 / 16-0-4-1） |
 
 每个插件文件夹里的 `README.md` 写着它的功能、设置、权限与更新日志，Erika 的插件详情页显示的就是它。
 
@@ -86,6 +89,7 @@ swift tools/make_icon.swift <SF Symbol> <#RRGGBB> plugins/<id>/icon.png
 - `category` 只有四种：`danmaku`（弹幕）、`picture`（画面）、`tools`（工具）、`appearance`（外观）。
 - `icon` 是文件夹里的 256 × 256 PNG。没有图标时用 `iconId` 指定一个系统图标，市场里显示成灰底图标；可用的有 `puzzlepiece.extension`、`eye.slash`、`line.3.horizontal.decrease`、`shield`、`tv`、`scissors`、`arrow.up.right.square`、`music.note`、`paintpalette`、`text.bubble`、`speedometer`、`link`、`arrow.down.circle`、`checkmark`、`sparkles`、`folder`、`film`、`star`、`gearshape`、`slider.horizontal.3`、`gobackward.10`。
 - `priority` 小的先处理弹幕，默认 50。
+- `upscalers` 与 `filters`：纯声明式画质增强插件可省略 `main`，直接在 `pack.json` 中声明自定义超分模型（`.esr` 或 liberika 支持的 mpv CNN 着色器，权限 `picture.upscaler`）或 RGB 后处理着色器（单 Pass `//!HOOK MAIN` GLSL 或 WGSL，权限 `picture.filter`），每项含 `{ "id", "name", "group"?, "file" }`。
 - 市场按 `permissions` 给插件打标签。
 
 和 NipaPlay 一样，声明也可以写在脚本里的 `pluginManifest`；Erika 暂时忽略 NipaPlay 插件的 `minHostVersion`（那是 NipaPlay 的版本号）。这里的插件用 `pack.json`，它优先于脚本里的声明。

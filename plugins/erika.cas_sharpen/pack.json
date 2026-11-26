@@ -1,0 +1,22 @@
+{
+  "id": "erika.cas_sharpen",
+  "name": "CAS 对比度锐化",
+  "version": "1.0.0",
+  "minHostVersion": "0.1.3",
+  "description": "自适应对比度锐化（Contrast Adaptive Sharpening）后处理滤镜，根据局部对比度自动抑制边缘过冲与噪点放大，提升动画线条与实拍细节。",
+  "author": "Erika",
+  "category": "picture",
+  "permissions": [
+    "picture.filter"
+  ],
+  "icon": "icon.png",
+  "iconId": "sparkles",
+  "priority": 50,
+  "filters": [
+    {
+      "id": "cas",
+      "name": "CAS 对比度锐化",
+      "file": "shaders/cas_sharpen.glsl"
+    }
+  ]
+}
