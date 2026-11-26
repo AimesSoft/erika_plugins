@@ -1,5 +1,5 @@
 //!DESC CRT Standard
-//!HOOK MAIN
+//!HOOK OUTPUT
 //!BIND HOOKED
 
 const float PI = 3.141592653589793;

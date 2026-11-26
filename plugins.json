@@ -177,9 +177,9 @@
     {
       "id": "erika.crt_filter",
       "name": "CRT 滤镜",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minHostVersion": "0.1.3",
-      "description": "移植自 NipaPlay 的 CRT 显像管滤镜，提供轻度、标准、高级三档扫描线、曲面畸变、三色荧光点阵与暗角效果，仅作用于视频画面，字幕与弹幕保持清晰。",
+      "description": "移植自 NipaPlay 的 CRT 显像管滤镜，提供轻度、标准、高级三档扫描线、曲面畸变、三色荧光点阵与暗角效果，同时作用于视频画面、字幕与弹幕。",
       "author": "Erika",
       "category": "picture",
       "permissions": [

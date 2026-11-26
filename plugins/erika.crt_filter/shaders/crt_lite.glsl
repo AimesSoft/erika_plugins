@@ -1,5 +1,5 @@
 //!DESC CRT Lite
-//!HOOK MAIN
+//!HOOK OUTPUT
 //!BIND HOOKED
 
 vec4 hook() {
